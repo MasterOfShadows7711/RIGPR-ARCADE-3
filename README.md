@@ -27,7 +27,7 @@ FILE HIERARCHY:
 					
 		Design: All Drawings and reference material.
 		
-		Planning: All time managment files, such as: Excel, Graphs, Trello Screenschots. Any meeting notes to be uploaded in .TXT format). 
+		Planning: All time managment files, such as: Excel, Graphs, Trello Screenschots. Any meeting notes to be uploaded in .TXT or .MP3 format). 
 	
 ********************************************
 ********************************************
