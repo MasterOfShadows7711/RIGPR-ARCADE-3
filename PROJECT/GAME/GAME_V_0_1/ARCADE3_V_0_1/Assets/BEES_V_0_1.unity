@@ -120,6 +120,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &91071315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91071317}
+  - component: {fileID: 91071316}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &91071316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91071315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde1976ab4ca04d4e9102b26c9f91e63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Blocks:
+  - {fileID: 5438951148150607294, guid: 7102e672b367e6d47b8e58bd992e5b63, type: 3}
+  - {fileID: 8938150048866900496, guid: f5b237643349299448084d7ab8d47877, type: 3}
+  - {fileID: 7098181190978309030, guid: 7f8c8b6db2aef4240b72c491e096edb3, type: 3}
+--- !u!4 &91071317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91071315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235978279
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,10 +203,9 @@ MonoBehaviour:
   XStart: -2.7
   YStart: 30
   ZStart: 10
-  Square: {fileID: -927199367670048503, guid: ad74c0d583731d7469b839f4f4f4f78e, type: 3}
-  Triangle: {fileID: -927199367670048503, guid: 53d632f0472cad142909ee27d02bbbdb,
-    type: 3}
-  Hexagon: {fileID: -927199367670048503, guid: bac16bcbfa48cd0499de46c2ee0d7089, type: 3}
+  Square: {fileID: 0}
+  Triangle: {fileID: 0}
+  Hexagon: {fileID: 0}
   FallingTime: 0.2
 --- !u!4 &235978281
 Transform:
@@ -168,7 +214,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235978279}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.865, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

@@ -8,6 +8,7 @@ public class Tetris : MonoBehaviour
     public int Columns, Rows;
     public float ColumnSpace, RowSpace;
 
+
     //Start location for the object
     public float XStart, YStart, ZStart;
 
@@ -26,13 +27,13 @@ public class Tetris : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        for (int i = 0; i < Columns * Rows; i++)
-        {
-            Instantiate(Square, new Vector3(XStart + (ColumnSpace * (i % Columns)),YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.identity);
-            Instantiate(Triangle, new Vector3(XStart + (ColumnSpace * (i % Columns)), YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.Euler(-90,0,0));
-            Instantiate(Hexagon, new Vector3(XStart + (ColumnSpace * (i % Columns)), YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.identity);
-        }
+        //spawner Creates a grid of blocks, one for each type. 
+        //for (int i = 0; i < Columns * Rows; i++)
+        //{
+        //    Instantiate(Square, new Vector3(XStart + (ColumnSpace * (i % Columns)),YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.identity);
+        //    Instantiate(Triangle, new Vector3(XStart + (ColumnSpace * (i % Columns)), YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.Euler(-90,0,0));
+        //    Instantiate(Hexagon, new Vector3(XStart + (ColumnSpace * (i % Columns)), YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.identity);
+        //}
 
         
     }
@@ -53,9 +54,19 @@ public class Tetris : MonoBehaviour
         {
             transform.position += new Vector3(1, 0, 0);
         }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            transform.Rotate(0, 0, 90);
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            transform.Rotate(0, 0, -90);
+        }
+
+
 
         //Fall area
-        if (Time.time - PreviousFallTime > (Input.GetKeyDown(KeyCode.S) ? FallingTime / 10 : FallingTime))
+        if (Time.time - PreviousFallTime > (Input.GetKey(KeyCode.Space) ? FallingTime / 10 : FallingTime))
         {
             transform.position += new Vector3(0, -1, 0);
             PreviousFallTime = Time.time;
