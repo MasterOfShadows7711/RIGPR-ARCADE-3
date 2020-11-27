@@ -8,17 +8,19 @@ public class Tetris : MonoBehaviour
     //public int Columns, Rows;
     //public float ColumnSpace, RowSpace;
 
-    //New grid system 25/11/20
-    public static int GridHight = 10;
-    public static int GridWidth = 10;
-    public static int GridDepht = 5;
-    public static float SetShapesX = 15.0f;
-    public static float SetShapesY = 50.0f;
-    public static float SetShapesZ = 5.0f;
+    //New grid system Not used
 
-    public Vector3[] SetShapes = new Vector3[50];
+    //public static int GridHight = 10;
+    //public static int GridWidth = 10;
+    //public static int GridDepht = 5;
+    //public static float SetShapesX = 15.0f;
+    //public static float SetShapesY = 50.0f;
+    //public static float SetShapesZ = 5.0f;
+
+    public static Vector3[] SetShapes = new Vector3[50];
 
     int i = 0;
+
     //Vector3[] SetShaps = new Vector3[];
 
 
@@ -40,6 +42,7 @@ public class Tetris : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+         
         //spawner Creates a grid of blocks, one for each type. 
         //for (int i = 0; i < Columns * Rows; i++)
         //{
@@ -48,7 +51,7 @@ public class Tetris : MonoBehaviour
         //    Instantiate(Hexagon, new Vector3(XStart + (ColumnSpace * (i % Columns)), YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.identity);
         //}
 
-        
+
     }
 
     // Update is called once per frame
@@ -89,19 +92,19 @@ public class Tetris : MonoBehaviour
             transform.position += new Vector3(0, -0.5f, 0);
             if (!GridCheck())
             {
-                if (!ShapesInGrid())
-                {
-                    transform.position -= new Vector3(0, -0.5f, 0);
-                    ShapesInGrid();
-                    SetShapes[i] = transform.position;
-                    i++;
-                    this.enabled = false;
-                    FindObjectOfType<Spawner>().NewBlock();
-                }
+                //if (!ShapesInGrid())
+                //{
+                //    transform.position -= new Vector3(0, -0.5f, 0);
+                //    ShapesInGrid();
+                //    SetShapes[i] = transform.position;
+                //    i++;
+                //    this.enabled = false;
+                //    FindObjectOfType<Spawner>().NewBlock();
+                //}
                 transform.position -= new Vector3(0, -0.5f, 0);
-                //ShapesInGrid();
-                //SetShapes[i] = transform.position;
-                //i++;
+                ShapesInGrid();
+                SetShapes[i] = transform.position;
+                i++;
                 this.enabled = false;
                 FindObjectOfType<Spawner>().NewBlock();
             }
@@ -119,14 +122,16 @@ public class Tetris : MonoBehaviour
             //float GridZ = Shapes.z;//Mathf.RoundToInt(Shapes.transform.position.z); //Rounds the Y Position to an Int 
             //int i = 0;
             //SetShapes[i] = transform.position;
-            //i++;// SetShapes[ShapesX];
+            //i++;
+            //SetShapes[ShapesX];
             //transform.position;
 
             for (int i = 0; i < 50; i++)
             {
-                if (transform.position.x == SetShapes[i].x && transform.position.y == SetShapes[i].y)
+                if (transform.position.x <= SetShapes[i].x && transform.position.y <= SetShapes[i].y && transform.position.z <= SetShapes[i].z)
                 {
-                    return false;
+                    transform.position -= new Vector3(0, -0.5f, 0);
+                    //return false;
                 }
             }
 
@@ -140,20 +145,17 @@ public class Tetris : MonoBehaviour
             //    int GridX = Mathf.RoundToInt(Shapes.transform.position.x); //Rounds the X Position to an Int 
             //    int GridY = Mathf.RoundToInt(Shapes.transform.position.y); //Rounds the Y Position to an Int 
             //    int GridZ = Mathf.RoundToInt(Shapes.transform.position.z); //Rounds the Y Position to an Int 
-
-
             //    if (GridX < 0 || GridX >=GridWidth || GridY < 0 || GridY >= GridHight || GridZ < 0 ||GridZ >=GridDepht) //Is shapes X axis in the grid, Is shapes Y axis in the grid
-            if (transform.position.x <= -5 || transform.position.x >= 5 || transform.position.y <= -1)
-            {
-                return false;
-            }
-
             //    if (SetShapes[GridX, GridY] != null)
             //    {
             //        return false;
             //    }
             //}
 
+            if (transform.position.x <= -5 || transform.position.x >= 5 || transform.position.y <= -1)
+            {
+                return false;
+            }
             return true; // If the shape is not out side
         }
     }

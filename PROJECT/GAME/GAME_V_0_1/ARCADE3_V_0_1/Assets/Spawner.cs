@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     public void NewBlock()
     {
         //
-        Instantiate(Blocks[Random.Range(0, Blocks.Length)], transform.position, Quaternion.identity);
+        Instantiate(Blocks[Random.Range(0, Blocks.Length)],transform.position, transform.rotation);
     }
 
 
