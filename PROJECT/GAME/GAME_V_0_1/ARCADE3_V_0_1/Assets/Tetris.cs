@@ -17,6 +17,8 @@ public class Tetris : MonoBehaviour
     public static float SetShapesZ = 5.0f;
 
     public Vector3[] SetShapes = new Vector3[50];
+
+    int i = 0;
     //Vector3[] SetShaps = new Vector3[];
 
 
@@ -32,7 +34,7 @@ public class Tetris : MonoBehaviour
     //Fall System
     //Dose time incress with points
     private float PreviousFallTime;
-    public float FallingTime = 1f;
+    public float FallingTime = 0.5f;
 
 
     // Start is called before the first frame update
@@ -84,11 +86,22 @@ public class Tetris : MonoBehaviour
         //Fall area
         if (Time.time - PreviousFallTime > (Input.GetKey(KeyCode.Space) ? FallingTime / 10 : FallingTime)) //If Space is pressed move block 10* faster.
         {
-            transform.position += new Vector3(0, -1, 0);
+            transform.position += new Vector3(0, -0.5f, 0);
             if (!GridCheck())
             {
-                transform.position -= new Vector3(0, -1, 0);
-                ShapesInGrid();
+                if (!ShapesInGrid())
+                {
+                    transform.position -= new Vector3(0, -0.5f, 0);
+                    ShapesInGrid();
+                    SetShapes[i] = transform.position;
+                    i++;
+                    this.enabled = false;
+                    FindObjectOfType<Spawner>().NewBlock();
+                }
+                transform.position -= new Vector3(0, -0.5f, 0);
+                //ShapesInGrid();
+                //SetShapes[i] = transform.position;
+                //i++;
                 this.enabled = false;
                 FindObjectOfType<Spawner>().NewBlock();
             }
@@ -96,7 +109,7 @@ public class Tetris : MonoBehaviour
             PreviousFallTime = Time.time;
         }
 
-        void ShapesInGrid()
+        bool ShapesInGrid()
         {
             //float GridX = Shapes.x;//Mathf.RoundToInt(Shapes.transform.position.x); //Rounds the X Position to an Int
             // Vector3 ShapesX = transform.position;
@@ -104,12 +117,20 @@ public class Tetris : MonoBehaviour
             //float ShapesZ = transform.position.z;
             //float GridY = Shapes.y;//Mathf.RoundToInt(Shapes.transform.position.y); //Rounds the Y Position to an Int 
             //float GridZ = Shapes.z;//Mathf.RoundToInt(Shapes.transform.position.z); //Rounds the Y Position to an Int 
-
-            // SetShapes[ShapesX];
-            
+            //int i = 0;
+            //SetShapes[i] = transform.position;
+            //i++;// SetShapes[ShapesX];
             //transform.position;
-                 
 
+            for (int i = 0; i < 50; i++)
+            {
+                if (transform.position.x == SetShapes[i].x && transform.position.y == SetShapes[i].y)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         bool GridCheck()
