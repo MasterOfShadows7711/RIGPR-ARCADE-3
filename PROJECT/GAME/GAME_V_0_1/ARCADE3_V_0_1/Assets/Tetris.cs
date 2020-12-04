@@ -86,6 +86,10 @@ public class Tetris : MonoBehaviour
         {
             transform.Rotate(0, 0, -90);
         }
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            //SaveSystem.SaveScore(this);
+        }
 
         //Fall area
         if (Time.time - PreviousFallTime > (Input.GetKey(KeyCode.Space) ? FallingTime / 10 : FallingTime)) //If Space is pressed move block 10* faster.

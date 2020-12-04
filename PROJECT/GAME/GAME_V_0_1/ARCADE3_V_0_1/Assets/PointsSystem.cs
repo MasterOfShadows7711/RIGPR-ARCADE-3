@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class PointsSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Save()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+            Debug.Log("SAVE");
+            SaveSystem.SaveScore(this);
+    }       
 }

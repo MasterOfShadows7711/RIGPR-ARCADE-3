@@ -63,7 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PointsData.cs" />
     <Compile Include="Assets\PointsSystem.cs" />
+    <Compile Include="Assets\SaveSystem.cs" />
     <Compile Include="Assets\Spawner.cs" />
     <Compile Include="Assets\StorageArray.cs" />
     <Compile Include="Assets\Tetris.cs" />
