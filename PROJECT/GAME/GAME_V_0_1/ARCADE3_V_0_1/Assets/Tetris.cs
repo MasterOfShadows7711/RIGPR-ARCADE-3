@@ -9,7 +9,6 @@ public class Tetris : MonoBehaviour
     //public float ColumnSpace, RowSpace;
 
     //New grid system Not used
-
     //public static int GridHight = 10;
     //public static int GridWidth = 10;
     //public static int GridDepht = 5;
@@ -17,11 +16,11 @@ public class Tetris : MonoBehaviour
     //public static float SetShapesY = 50.0f;
     //public static float SetShapesZ = 5.0f;
 
-    public static Vector3[] SetShapes = new Vector3[50];
+    //public Vector3[] SetShapes = new Vector3[50];
 
-    int i = 0;
+    int i = 1;
 
-    //Vector3[] SetShaps = new Vector3[];
+    //Vector3[] SetShaps = new Vector3[50];
 
 
     //Start location for the object
@@ -42,8 +41,10 @@ public class Tetris : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         
-        //spawner Creates a grid of blocks, one for each type. 
+        //StorageArray.SetShapes[0].x = 999;
+        //StorageArray.SetShapes[0].y = 999;
+        //StorageArray.SetShapes[0].z = 999;
+        //spawner Creates a grid of blocks, one for each type. Used for Debug.
         //for (int i = 0; i < Columns * Rows; i++)
         //{
         //    Instantiate(Square, new Vector3(XStart + (ColumnSpace * (i % Columns)),YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.identity);
@@ -92,19 +93,24 @@ public class Tetris : MonoBehaviour
             transform.position += new Vector3(0, -0.5f, 0);
             if (!GridCheck())
             {
-                //if (!ShapesInGrid())
-                //{
-                //    transform.position -= new Vector3(0, -0.5f, 0);
-                //    ShapesInGrid();
-                //    SetShapes[i] = transform.position;
-                //    i++;
-                //    this.enabled = false;
-                //    FindObjectOfType<Spawner>().NewBlock();
-                //}
                 transform.position -= new Vector3(0, -0.5f, 0);
-                ShapesInGrid();
-                SetShapes[i] = transform.position;
+                //ShapesInGrid();
+                ////SetShapes[i] = transform.position;
+                StorageArray.StorageArrayFunction(i, transform.position);
+                //Debug.Log("Dose the Array work?" + StorageArray.SetShapes[i] + transform.position);
+                
+                Debug.Log("FallArea - Failed Gridcheck()" +gameObject.name + transform.position);
+                this.enabled = false;
+                FindObjectOfType<Spawner>().NewBlock();
+            }
+
+            else if (!ShapesInGrid())
+            {
+                transform.position -= new Vector3(0, -0.5f, 0);
+                //ShapesInGrid();
+                StorageArray.StorageArrayFunction(i, transform.position);
                 i++;
+                Debug.Log("FallArea -  has failed ShapesInGrid()" + transform.position);
                 this.enabled = false;
                 FindObjectOfType<Spawner>().NewBlock();
             }
@@ -125,13 +131,14 @@ public class Tetris : MonoBehaviour
             //i++;
             //SetShapes[ShapesX];
             //transform.position;
-
-            for (int i = 0; i < 50; i++)
+            Debug.Log("ShapesInGrid()_");
+            for (int i = 1; i < 50; i++)
             {
-                if (transform.position.x <= SetShapes[i].x && transform.position.y <= SetShapes[i].y && transform.position.z <= SetShapes[i].z)
+                if (transform.position.x == StorageArray.SetShapes[i].x && transform.position.y == StorageArray.SetShapes[i].y && transform.position.z == StorageArray.SetShapes[i].z)
                 {
-                    transform.position -= new Vector3(0, -0.5f, 0);
-                    //return false;
+                    Debug.Log("ShapesInGrid() object in set shape." + transform.position);
+                    //transform.position -= new Vector3(0, -0.5f, 0);
+                    return false;
                 }
             }
 
@@ -152,8 +159,9 @@ public class Tetris : MonoBehaviour
             //    }
             //}
 
-            if (transform.position.x <= -5 || transform.position.x >= 5 || transform.position.y <= -1)
+            if (transform.position.x <= -5 || transform.position.x >= 5 || transform.position.y <= -0.5)
             {
+                //Debug.Log("GridCheck() has tried to exit grid." + transform.position);
                 return false;
             }
             return true; // If the shape is not out side

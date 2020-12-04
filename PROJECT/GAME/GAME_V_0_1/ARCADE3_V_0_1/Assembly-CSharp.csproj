@@ -63,7 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PointsSystem.cs" />
     <Compile Include="Assets\Spawner.cs" />
+    <Compile Include="Assets\StorageArray.cs" />
     <Compile Include="Assets\Tetris.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/UNI/YEAR 3/RTIP/RIGPR-ARCADE-3/RIGPR-ARCADE-3/PROJECT/GAME/GAME_V_0_1/ARCADE3_V_0_1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
