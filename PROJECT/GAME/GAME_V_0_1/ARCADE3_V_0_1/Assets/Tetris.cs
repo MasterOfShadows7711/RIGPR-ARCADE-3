@@ -86,7 +86,7 @@ public class Tetris : MonoBehaviour
         {
             transform.Rotate(0, 0, -90);
         }
-        else if (Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetKeyDown(KeyCode.Return)) //For debug only
         {
             //SaveSystem.SaveScore(this);
         }
@@ -105,6 +105,7 @@ public class Tetris : MonoBehaviour
                 
                 Debug.Log("FallArea - Failed Gridcheck()" +gameObject.name + transform.position);
                 this.enabled = false;
+                FindObjectOfType<Spawner>().transform.position += new Vector3 (0, 0.5f, 0);
                 FindObjectOfType<Spawner>().NewBlock();
             }
 
@@ -116,6 +117,7 @@ public class Tetris : MonoBehaviour
                 i++;
                 Debug.Log("FallArea -  has failed ShapesInGrid()" + transform.position);
                 this.enabled = false;
+                FindObjectOfType<Spawner>().transform.position += new Vector3(0, 0.5f, 0);
                 FindObjectOfType<Spawner>().NewBlock();
             }
 
