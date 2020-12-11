@@ -8,12 +8,16 @@ public class PlayerData
 {
     public string PlayerName;
     public int Score;
+    public float[] position;
 
-    public PlayerData(PointsSystem points)
+    public PlayerData(Player player)
     {
         //DUMMY TEST
-        PlayerName = "DUMMY TEST";
-        Score = 9999;
-        
+        PlayerName = player.PlayerName;
+        Score = player.Score;
+        position = new float[3];
+        position[0] = player.transform.position.x;
+        position[1] = player.transform.position.y;
+        position[2] = player.transform.position.z;
     }
 }

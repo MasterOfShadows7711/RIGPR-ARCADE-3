@@ -15,8 +15,7 @@ public class PointsData
     //
     public PointsData (PointsSystem points)
     {
-        //PlayerName = //playerData.cs
-        //Score = //playerData.cs
+        
         HighScoreName = "TestDummby";
         HighScore = 99999;
 

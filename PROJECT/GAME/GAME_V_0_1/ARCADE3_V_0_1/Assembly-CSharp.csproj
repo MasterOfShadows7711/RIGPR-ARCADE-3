@@ -63,6 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HighScore.cs" />
+    <Compile Include="Assets\HighScoreData.cs" />
+    <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\PlayerData.cs" />
     <Compile Include="Assets\PointsData.cs" />

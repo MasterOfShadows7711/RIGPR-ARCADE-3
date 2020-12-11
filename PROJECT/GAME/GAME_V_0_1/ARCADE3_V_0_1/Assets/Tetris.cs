@@ -142,7 +142,7 @@ public class Tetris : MonoBehaviour
             {
                 if (transform.position.x == StorageArray.SetShapes[i].x && transform.position.y == StorageArray.SetShapes[i].y && transform.position.z == StorageArray.SetShapes[i].z)
                 {
-                    Debug.Log("ShapesInGrid() object in set shape." + transform.position);
+                    Debug.Log("ShapesInGrid()_ New Shape in Set shape." + transform.position);
                     //transform.position -= new Vector3(0, -0.5f, 0);
                     return false;
                 }

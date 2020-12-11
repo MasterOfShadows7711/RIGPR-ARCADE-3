@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public string PlayerName;
+    public int Score;
+    public float[] position;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +42,19 @@ public class Player : MonoBehaviour
         //}
         else if (Input.GetKeyDown(KeyCode.Return)) //For debug only
         {
-            //SaveSystem.SaveScore(this);
+            SaveSystem.SaveScore(this);
+        }
+        else if (Input.GetKeyDown(KeyCode.Backspace)) //For debug only
+        {
+            PlayerData data = SaveSystem.LoadScore();
+            PlayerName = data.PlayerName;
+            Score = data.Score;
+            Vector3 position;
+            position.x = data.position[0];
+            position.y = data.position[1];
+            position.z = data.position[2];
+            transform.position = position;
+
         }
 
         bool GridCheckPlayer()
