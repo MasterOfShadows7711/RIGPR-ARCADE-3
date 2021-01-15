@@ -18,7 +18,7 @@ public class StorageArray : MonoBehaviour
 
     void Update()
     {
-        ArrayCurrentShape = 0;
+        //ArrayCurrentShape = 0;
     }
 
     public static void StorageArrayFunction(int ArrayCurrentShape, Vector3 position)
@@ -29,9 +29,9 @@ public class StorageArray : MonoBehaviour
             //Debug.Log("" + Transform,position)
             SetShapes[ArrayCurrentShape] = position;
             Debug.Log("StorageArrayFunction()_" +SetShapes[ArrayCurrentShape] + ArrayCurrentShape + position);
-            Debug.Log("StorageArrayFunction()_TEST0" + SetShapes[0] + ArrayCurrentShape + position);
-            Debug.Log("StorageArrayFunction()_TEST1" + SetShapes[1] + ArrayCurrentShape + position);
-            Debug.Log("StorageArrayFunction()_TEST2" + SetShapes[2] + ArrayCurrentShape + position);
+            //Debug.Log("StorageArrayFunction()_TEST0" + SetShapes[0] + ArrayCurrentShape + position);
+            //Debug.Log("StorageArrayFunction()_TEST1" + SetShapes[1] + ArrayCurrentShape + position);
+            //Debug.Log("StorageArrayFunction()_TEST2" + SetShapes[2] + ArrayCurrentShape + position);
             //ArrayCurrentShape++;
         }
         //ArrayCurrentShape++;

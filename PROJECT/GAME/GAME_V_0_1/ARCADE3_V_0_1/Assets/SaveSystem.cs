@@ -7,7 +7,6 @@ public static class SaveSystem
     //TEMP SAVE PLAYER DATA
     public static void SaveScore(Player player)
     {
-
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/ScoreData.Arcade3";
         FileStream stream = new FileStream(path, FileMode.Create);

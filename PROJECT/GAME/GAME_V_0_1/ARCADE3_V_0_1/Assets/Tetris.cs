@@ -20,6 +20,7 @@ public class Tetris : MonoBehaviour
 
     int i = 1;
 
+    
     //Vector3[] SetShaps = new Vector3[50];
 
 
@@ -58,6 +59,10 @@ public class Tetris : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float TrackingX = 0;
+        int TrackingXReturn = 0;
+        float TrackingXQuartered;
+        //float TrackingXReturnSplit = 0;
         //Controls
         // A Left
         // D Right
@@ -65,34 +70,114 @@ public class Tetris : MonoBehaviour
         // Q Rotate AntiClockwise
         // E Rotate Clockwise
 
-        if (Input.GetKeyDown(KeyCode.A))
+        //PLAYER TRACKING
+
+        if (transform.position.y >= FindObjectOfType<Spawner>().transform.position.y / 2)
         {
-            transform.position += new Vector3(-0.5f, 0, 0);
-            if (!GridCheck())
-                transform.position -= new Vector3(-0.5f, 0, 0);
-            
+            //Debug.Log("TRACKING PRE HIGHT LIMIT");
+            TrackingX = FindObjectOfType<Player>().transform.position.x;
+            TrackingXReturn = Mathf.RoundToInt(TrackingX);
+            TrackingXQuartered = Mathf.Round(TrackingX * 2) / 2;
+            //TrackingXReturnSplit = TrackingXReturn / 4;
+            //Debug.Log("TRACKING PRE HIGHT LIMIT ");
+
+            //for (int i = TrackingXReturn; i < -1 || i > -5; i--)
+            //{
+            if ((TrackingXReturn < 5) && (TrackingXReturn > -5))
+            {
+                if (transform.position.x == TrackingXReturn)
+                {
+
+                }
+                if (transform.position.x == TrackingXQuartered)
+                {
+
+                }
+                else if (transform.position.x != TrackingXReturn)
+                {
+                    
+                    if (TrackingXQuartered <= transform.position.x)
+                    {
+                        //Debug.Log("Returned - " + TrackingXQuartered);
+                        transform.position += new Vector3(-0.25f, 0, 0);
+
+                    }
+                    else if (TrackingXQuartered >= transform.position.x)
+                    {
+                        //Debug.Log("Returned + " + TrackingXQuartered);
+                        transform.position += new Vector3(0.25f, 0, 0);
+                    }
+
+                }
+            }
+            //else if ((TrackingXReturn > 1) && (TrackingXReturn < 5))
+            //{
+            //    if (transform.position.x == TrackingXReturn)
+            //    {
+
+            //    }
+            //    else if (transform.position.x != TrackingXReturn)
+            //    {
+            //        if (TrackingXReturn <= transform.position.x)
+            //        {
+            //            //Debug.Log("Returned - " + TrackingXReturn);
+            //            transform.position += new Vector3(-0.5f, 0, 0);
+
+            //        }
+            //        else if (TrackingXReturn >= transform.position.x)
+            //        {
+            //            //Debug.Log("Returned + " + TrackingXReturn);
+            //            transform.position += new Vector3(0.5f, 0, 0);
+            //        }
+            //    }
+            //}
+            //else if (TrackingXReturn == 0)
+            //{
+                
+            //}
+            //else if ((TrackingXReturn > -0.5) && (TrackingXReturn < 0))
+            //{
+            //    //Debug.Log("Returned + " + TrackingXReturn);
+            //    transform.position += new Vector3(0.5f, 0, 0);
+            //}
+            //else if ((TrackingXReturn > 0) && (TrackingXReturn < 0.5))
+            //{
+            //    transform.position -= new Vector3(0.5f, 0, 0);
+            //}
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (transform.position.y == FindObjectOfType<Spawner>().transform.position.y / 2)
         {
-            transform.position += new Vector3(0.5f, 0, 0);
-            if (!GridCheck())
-                transform.position -= new Vector3(0.5f, 0, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            transform.Rotate(0, 0, 90);
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            transform.Rotate(0, 0, -90);
-        }
-        else if (Input.GetKeyDown(KeyCode.Return)) //For debug only
-        {
-            //SaveSystem.SaveScore(this);
+            Debug.Log("NO LONGER TRACKING");
         }
 
+        //if (Input.GetKeyDown(KeyCode.A)) //DEBUG ONLY
+        //{
+        //    transform.position += new Vector3(-0.5f, 0, 0);
+        //    if (!GridCheck())
+        //        transform.position -= new Vector3(-0.5f, 0, 0);
+            
+        //}
+        //else if (Input.GetKeyDown(KeyCode.D)) //DEBUG ONLY
+        //{
+        //    transform.position += new Vector3(0.5f, 0, 0);
+        //    if (!GridCheck())
+        //        transform.position -= new Vector3(0.5f, 0, 0);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.E)) //DEBUG ONLY
+        //{
+        //    transform.Rotate(0, 0, 90);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Q)) //DEBUG ONLY
+        //{
+        //    transform.Rotate(0, 0, -90);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Return)) //For debug only
+        //{
+        //    //SaveSystem.SaveScore(this);
+        //}
+
         //Fall area
-        if (Time.time - PreviousFallTime > (Input.GetKey(KeyCode.Space) ? FallingTime / 10 : FallingTime)) //If Space is pressed move block 10* faster.
+        if (Time.time - PreviousFallTime > (Input.GetKey(KeyCode.S) ? FallingTime / 10 : FallingTime)) //If Space is pressed move block 10* faster.
         {
             transform.position += new Vector3(0, -0.5f, 0);
             if (!GridCheck())
@@ -103,7 +188,7 @@ public class Tetris : MonoBehaviour
                 StorageArray.StorageArrayFunction(i, transform.position);
                 //Debug.Log("Dose the Array work?" + StorageArray.SetShapes[i] + transform.position);
                 
-                Debug.Log("FallArea - Failed Gridcheck()" +gameObject.name + transform.position);
+                //Debug.Log("FallArea - Failed Gridcheck()" +gameObject.name + transform.position);
                 this.enabled = false;
                 FindObjectOfType<Spawner>().transform.position += new Vector3 (0, 0.5f, 0);
                 FindObjectOfType<Spawner>().NewBlock();
@@ -115,7 +200,7 @@ public class Tetris : MonoBehaviour
                 //ShapesInGrid();
                 StorageArray.StorageArrayFunction(i, transform.position);
                 i++;
-                Debug.Log("FallArea -  has failed ShapesInGrid()" + transform.position);
+                //Debug.Log("FallArea -  has failed ShapesInGrid()" + transform.position);
                 this.enabled = false;
                 FindObjectOfType<Spawner>().transform.position += new Vector3(0, 0.5f, 0);
                 FindObjectOfType<Spawner>().NewBlock();
@@ -137,12 +222,12 @@ public class Tetris : MonoBehaviour
             //i++;
             //SetShapes[ShapesX];
             //transform.position;
-            Debug.Log("ShapesInGrid()_");
+            //Debug.Log("ShapesInGrid()_");
             for (int i = 1; i < 50; i++)
             {
                 if (transform.position.x == StorageArray.SetShapes[i].x && transform.position.y == StorageArray.SetShapes[i].y && transform.position.z == StorageArray.SetShapes[i].z)
                 {
-                    Debug.Log("ShapesInGrid()_ New Shape in Set shape." + transform.position);
+                    //Debug.Log("ShapesInGrid()_ New Shape in Set shape." + transform.position);
                     //transform.position -= new Vector3(0, -0.5f, 0);
                     return false;
                 }

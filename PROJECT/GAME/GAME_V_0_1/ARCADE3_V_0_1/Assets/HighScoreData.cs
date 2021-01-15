@@ -8,7 +8,13 @@ public class HighScoreData
     public string HighScorePlayerName;
     public int HighScoreInt;
     //Model
-
+    enum Tex
+    {
+        Tex1,
+        Tex2,
+        Tex3,
+        Tex4
+    }
 
     public HighScoreData(HighScore HighScore)
     {
