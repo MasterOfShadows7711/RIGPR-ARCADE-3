@@ -45,6 +45,7 @@ public class Tetris : MonoBehaviour
         //StorageArray.SetShapes[0].x = 999;
         //StorageArray.SetShapes[0].y = 999;
         //StorageArray.SetShapes[0].z = 999;
+
         //spawner Creates a grid of blocks, one for each type. Used for Debug.
         //for (int i = 0; i < Columns * Rows; i++)
         //{
@@ -53,6 +54,11 @@ public class Tetris : MonoBehaviour
         //    Instantiate(Hexagon, new Vector3(XStart + (ColumnSpace * (i % Columns)), YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.identity);
         //}
 
+        //GameObject Array = GameObject.Find("StorageArrayObject");
+        //StorageArray BlockNum = Array.GetComponent<StorageArray>();
+        //StorageArray.BlockCount
+
+        FindObjectOfType<StorageArray>().BlockCount++;
 
     }
 
@@ -185,7 +191,7 @@ public class Tetris : MonoBehaviour
                 transform.position -= new Vector3(0, -0.5f, 0);
                 //ShapesInGrid();
                 ////SetShapes[i] = transform.position;
-                StorageArray.StorageArrayFunction(i, transform.position);
+                StorageArray.StorageArrayFunction(FindObjectOfType<StorageArray>().BlockCount, transform.position);
                 //Debug.Log("Dose the Array work?" + StorageArray.SetShapes[i] + transform.position);
                 
                 //Debug.Log("FallArea - Failed Gridcheck()" +gameObject.name + transform.position);
@@ -198,8 +204,8 @@ public class Tetris : MonoBehaviour
             {
                 transform.position -= new Vector3(0, -0.5f, 0);
                 //ShapesInGrid();
-                StorageArray.StorageArrayFunction(i, transform.position);
-                i++;
+                StorageArray.StorageArrayFunction(FindObjectOfType<StorageArray>().BlockCount, transform.position);
+                Debug.Log("BlockCount_" + FindObjectOfType<StorageArray>().BlockCount);
                 //Debug.Log("FallArea -  has failed ShapesInGrid()" + transform.position);
                 this.enabled = false;
                 FindObjectOfType<Spawner>().transform.position += new Vector3(0, 0.5f, 0);
