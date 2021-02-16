@@ -31,14 +31,20 @@ public class PauseMenu : MonoBehaviour
 
             }
             else 
-            {   
+            {
+                Debug.Log("Lives " + LivesSystem.lives);
+                Debug.Log("GameOver Status " + LivesSystem.GameOver);
+                //Debug.Log("GameOver Status " + LivesSystem.GameOver);
                 Pause();
                 Paused = true;
             }
             
         }
-        
 
+        //if (Paused)
+        //{
+
+        //}
 
     }
     void Pause()

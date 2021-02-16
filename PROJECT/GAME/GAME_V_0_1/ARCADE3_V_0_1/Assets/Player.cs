@@ -9,14 +9,18 @@ public class Player : MonoBehaviour
     public float[] position;
     bool HasJumped = false;
 
-    public AudioClip Jump;
+    public AudioClip RunSound;
+    public AudioClip JumpSound;
+    //public AudioClip ;
+    //public AudioClip ;
     private AudioSource Source;
 
 
 
 
     private Rigidbody rbPlayer;
-    public BoxCollider PlayerCol;
+    //public BoxCollider PlayerCol;
+    public CapsuleCollider PlayerCol;
     public LayerMask Ground;
     public float JumpAmount = 3;
 
@@ -26,7 +30,8 @@ public class Player : MonoBehaviour
         Source = GetComponent<AudioSource>();
 
         rbPlayer = GetComponent<Rigidbody>();
-        PlayerCol = GetComponent <BoxCollider>();
+        //PlayerCol = GetComponent <BoxCollider>();
+        PlayerCol = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -69,26 +74,26 @@ public class Player : MonoBehaviour
             }
         }
 
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    if (transform.rotation.eulerAngles.y == 0)
-        //    {
-        //        //transform.Rotate(0, -90, 0);
-        //    }
-        //    else
-        //    {
-        //        transform.Rotate(0, 90, 0);
-        //    }
-        //    if (!GridCheckPlayer())
-        //    {
-        //        transform.position -= new Vector3(1.5f, 0, 0) * Time.deltaTime;
-        //    }
-        //}
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (transform.rotation.eulerAngles.y == 0)
+            {
+                
+            }
+            else
+            {
+                transform.Rotate(0, 90, 0);
+            }
+            //if (!GridCheckPlayer())
+            //{
+            //    transform.position -= new Vector3(1.5f, 0, 0) * Time.deltaTime;
+            //}
+        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (IsOnground() && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("SPACE KEY PRESSED");
-            Source.PlayOneShot(Jump,1f);
+            Source.PlayOneShot(JumpSound,1f);
             rbPlayer.AddForce(Vector3.up * JumpAmount, ForceMode.Impulse);
         }
         
@@ -171,7 +176,7 @@ public class Player : MonoBehaviour
     }
     private bool IsOnground()
     {
-        return Physics.CheckBox(PlayerCol.bounds.center, new Vector3(PlayerCol.bounds.center.x, PlayerCol.bounds.min.y, PlayerCol.bounds.center.z), PlayerCol.transform.localRotation, Ground, QueryTriggerInteraction.UseGlobal);
+        return Physics.CheckCapsule(PlayerCol.bounds.center, new Vector3(PlayerCol.bounds.center.x, PlayerCol.bounds.min.y, PlayerCol.bounds.center.z), PlayerCol.radius * .8f, Ground);
         
 
     }

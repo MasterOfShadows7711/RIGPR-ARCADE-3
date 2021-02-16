@@ -613,8 +613,10 @@ GameObject:
   - component: {fileID: 758671686}
   - component: {fileID: 758671685}
   - component: {fileID: 758671683}
+  - component: {fileID: 758671691}
   - component: {fileID: 758671688}
   - component: {fileID: 758671684}
+  - component: {fileID: 758671690}
   - component: {fileID: 758671689}
   m_Layer: 0
   m_Name: Player
@@ -638,7 +640,8 @@ MonoBehaviour:
   PlayerName: DAVE JOHNSON
   Score: 99999
   position: []
-  Jump: {fileID: 8300000, guid: 6018b180fac8da94bbf34bdda71ec789, type: 3}
+  RunSound: {fileID: 0}
+  JumpSound: {fileID: 8300000, guid: 6018b180fac8da94bbf34bdda71ec789, type: 3}
   PlayerCol: {fileID: 0}
   Ground:
     serializedVersion: 2
@@ -653,7 +656,7 @@ BoxCollider:
   m_GameObject: {fileID: 758671682}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -829,6 +832,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &758671690
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758671682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &758671691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758671682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62ebc5a2538dad498caafeba832c546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &935541399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1219,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 0

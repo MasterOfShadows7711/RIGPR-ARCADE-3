@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\HighScore.cs" />
     <Compile Include="Assets\HighScoreData.cs" />
+    <Compile Include="Assets\LivesSystem.cs" />
     <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\Player.cs" />
