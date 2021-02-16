@@ -2,6 +2,9 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - HighScore
+    - LivesSystem
+    - MainMenu
+    - PauseMenu
     - Player
     - PointsSystem
     - Spawner
@@ -44,11 +47,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 64
+    - Class: 54
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -57,39 +64,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9658}
     - Class: 114
-      Script: {instanceID: 9870}
+      Script: {instanceID: 9812}
     - Class: 114
-      Script: {instanceID: 9900}
+      Script: {instanceID: 9872}
     - Class: 114
-      Script: {instanceID: 9958}
+      Script: {instanceID: 9902}
     - Class: 114
-      Script: {instanceID: 10034}
+      Script: {instanceID: 9960}
     - Class: 114
-      Script: {instanceID: 10122}
+      Script: {instanceID: 10036}
     - Class: 114
-      Script: {instanceID: 10510}
+      Script: {instanceID: 10124}
     - Class: 114
-      Script: {instanceID: 10800}
+      Script: {instanceID: 10512}
     - Class: 114
-      Script: {instanceID: 10822}
+      Script: {instanceID: 10802}
     - Class: 114
-      Script: {instanceID: 10906}
+      Script: {instanceID: 10824}
     - Class: 114
-      Script: {instanceID: 10930}
+      Script: {instanceID: 10908}
     - Class: 114
-      Script: {instanceID: 11400}
+      Script: {instanceID: 10932}
     - Class: 114
-      Script: {instanceID: 11460}
+      Script: {instanceID: 11402}
     - Class: 114
-      Script: {instanceID: 11744}
+      Script: {instanceID: 11404}
     - Class: 114
-      Script: {instanceID: 11766}
+      Script: {instanceID: 11464}
     - Class: 114
-      Script: {instanceID: 11794}
+      Script: {instanceID: 11748}
     - Class: 114
-      Script: {instanceID: 12198}
+      Script: {instanceID: 11770}
     - Class: 114
-      Script: {instanceID: 12240}
+      Script: {instanceID: 11798}
+    - Class: 114
+      Script: {instanceID: 12202}
+    - Class: 114
+      Script: {instanceID: 12244}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -105,6 +116,95 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    Assets/BOSS_V_0_1.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    Assets/MainMenu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9658}
+    - Class: 114
+      Script: {instanceID: 9698}
+    - Class: 114
+      Script: {instanceID: 9902}
+    - Class: 114
+      Script: {instanceID: 10512}
+    - Class: 114
+      Script: {instanceID: 11748}
+    - Class: 114
+      Script: {instanceID: 12244}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/SNAKE_V_0_1.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 258
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -161,6 +261,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 2162cf381ac20eefdffc902864ace2fa
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PauseMenu
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -283,7 +389,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: b2ac58b6bbfc6aae787e0a5fbcf1fc62
+      Hash: b7c800c4f503fc0e46efed1ce847ed9a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -625,6 +731,12 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LivesSystem
+  - hash:
+      serializedVersion: 2
       Hash: 56cebae4dbbd1a256351d1a8ffeded1b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -697,7 +809,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: d5f26bb05c1cf0a1c17b84e71d7039c6
+      Hash: 953978c1cd8d9373ffec246a8c2e2401
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StorageArray
@@ -871,5 +983,8 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 5
   scenePathNames:
+  - Assets/MainMenu.unity
   - Assets/BEES_V_0_1.unity
-  playerPath: D:/UNI/YEAR 3/RTIP/Builds/ARCADE3_V_0_1.exe
+  - Assets/SNAKE_V_0_1.unity
+  - Assets/BOSS_V_0_1.unity
+  playerPath: D:/UNI/YEAR 3/RTIP/Builds/BUILD_V_0_2/ARCADE3_V_0_1.exe
