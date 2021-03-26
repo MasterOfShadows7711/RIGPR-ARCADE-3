@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     bool CoinLoaded = false;
 
+    //public Animator Transition;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameStart();
     }
 
     // Update is called once per frame
@@ -19,11 +22,19 @@ public class MainMenu : MonoBehaviour
 
         if (Input.anyKey)
         {
-            CoinLoaded = true;
-            //Change UI
-            SceneManager.LoadScene(1);
+            FindObjectOfType<LevelTransision>().LevelChange();
+
+
+
         }
-
-
     }
+
+    public void GameStart()
+    {
+        //CoinLoaded = true;
+        
+
+    }    
 }
+
+

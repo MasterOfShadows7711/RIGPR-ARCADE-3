@@ -15,9 +15,6 @@ public class Player : MonoBehaviour
     //public AudioClip ;
     private AudioSource Source;
 
-
-
-
     private Rigidbody rbPlayer;
     //public BoxCollider PlayerCol;
     public CapsuleCollider PlayerCol;
@@ -84,10 +81,7 @@ public class Player : MonoBehaviour
             {
                 transform.Rotate(0, 90, 0);
             }
-            //if (!GridCheckPlayer())
-            //{
-            //    transform.position -= new Vector3(1.5f, 0, 0) * Time.deltaTime;
-            //}
+            
         }
 
         if (IsOnground() && Input.GetKeyDown(KeyCode.Space))
@@ -96,20 +90,7 @@ public class Player : MonoBehaviour
             Source.PlayOneShot(JumpSound,1f);
             rbPlayer.AddForce(Vector3.up * JumpAmount, ForceMode.Impulse);
         }
-        
-
-        //if (!Input.GetKey(KeyCode.Space))
-        //{
-        //    //transform.position -= new Vector3(0, 2, 0) * Time.deltaTime;
-        //    if (!GridCheckPlayer())
-        //    {
-        //        transform.position += new Vector3(0, 2, 0) * Time.deltaTime;
-        //    }
-        //    if (!ShapesInGridPlayer())
-        //    {
-        //        transform.position += new Vector3(0, 2, 0) * Time.deltaTime;
-        //    }
-        //}
+       
         if (Input.GetKeyDown(KeyCode.Return)) //For debug only
         {
             SaveSystem.SaveScore(this);
@@ -126,54 +107,18 @@ public class Player : MonoBehaviour
             transform.position = position;
 
         }
-
-        //PLAYER AREA 
-        if (!GridCheckPlayer())
-        {
-            //HasJumped = false;
-            
-        }
-        //if (!ShapesInGridPlayer())
-        //{
-        //    Debug.Log("ShapesInGridPlayer()_ PLAYER HIT SHAPE");
-        //    if (transform.rotation.eulerAngles.y == 90)
-        //    {
-        //        transform.position += new Vector3(1.5f, 0, 0) * Time.deltaTime;
-        //    }
-        //    if (transform.rotation.eulerAngles.y != 90)
-        //    {
-        //        transform.position += new Vector3(-1.5f, 0, 0) * Time.deltaTime;
-        //    }
-        //}
-
-        bool GridCheckPlayer()
-        {
-            if (transform.position.x <= -5 || transform.position.x >= 5 || transform.position.y <= -0.1 || transform.position.z <= 4.9 || transform.position.x >= 5.1)
-            {
-                Debug.Log("GridCheckPlayer() _ Player has tried to exit grid." + transform.position);
-                return false;
-            }
-            return true; // If the shape is not out side
-        }
-
-        //bool ShapesInGridPlayer()
-        //{
-        //    Debug.Log("ShapesInGridPlayer()_");
-        //    for (int i = 1; i < 50; i++)
-        //    {
-        //        if (transform.position.x == StorageArray.SetShapes[i].x && transform.position.y == StorageArray.SetShapes[i].y && transform.position.z == StorageArray.SetShapes[i].z)
-        //        {
-        //            Debug.Log("ShapesInGridPlayer()_ Player In Shape." + transform.position);
-        //            //transform.position -= new Vector3(0, -0.5f, 0);
-        //            return false;
-        //        }
-        //    }
-        //    Debug.Log("ShapesInGridPlayer()_ Return True");
-        //    return true;
-        //}
-
-      
     }
+
+    bool GridCheckPlayer()
+    {
+        if (transform.position.x <= -5 || transform.position.x >= 5 || transform.position.y <= -0.1 || transform.position.z <= 4.9 || transform.position.x >= 5.1)
+        {
+            Debug.Log("GridCheckPlayer() _ Player has tried to exit grid." + transform.position);
+            return false;
+        }
+        return true; // If the shape is not out side
+    }
+
     private bool IsOnground()
     {
         return Physics.CheckCapsule(PlayerCol.bounds.center, new Vector3(PlayerCol.bounds.center.x, PlayerCol.bounds.min.y, PlayerCol.bounds.center.z), PlayerCol.radius * .8f, Ground);
