@@ -76,6 +76,14 @@ public class PauseMenu : MonoBehaviour
             Application.Quit();
         }
 
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            FindObjectOfType<LevelTransision>().LevelChangeBoss();
+
+
+
+        }
+
     }
 
     void Pause()

@@ -94,22 +94,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ecb68c3ae78e145a7f5c1de37760e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Object: {fileID: 2072493759125194450}
+  ApplePS: []
+  BannanaPS:
+  - {fileID: 538893634346810386, guid: 3f102a7bdc9c3074aaeaa264378654bb, type: 3}
+  CherryPS: []
+  BombPS: []
   ThrownObejctCollider: {fileID: 0}
   ThrowSound: {fileID: 0}
   Ground:
     serializedVersion: 2
     m_Bits: 512
-  Apple: {fileID: 0}
-  ApplePS: {fileID: 7183240560100434075, guid: f681fbf0e03ce4b47a0f6378fdd5b132, type: 3}
-  BannanaPS: {fileID: 1078598389166410209, guid: 06d8bad7b4b5f914fbe99b706826629d,
-    type: 3}
-  Bannana: {fileID: 0}
-  CherryPS: {fileID: 8444427203660286715, guid: f994c47151b106e4582c59fe61c19d3a,
-    type: 3}
-  Cherry: {fileID: 0}
-  Bomb: {fileID: 0}
-  BombPS: {fileID: 7894174690565287696, guid: ebf9afc087f84c44c8a7780fdbc6c4a2, type: 3}
+  Objname: 
 --- !u!54 &-131070159049363470
 Rigidbody:
   m_ObjectHideFlags: 0

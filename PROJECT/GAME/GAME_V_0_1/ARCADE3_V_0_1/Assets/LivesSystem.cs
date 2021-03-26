@@ -49,7 +49,7 @@ public class LivesSystem : MonoBehaviour
         }
         else if (lives == 0)
         {
-            GetComponent<Player>().enabled = false;
+            FindObjectOfType<Player>().enabled = false;
             StartCoroutine(RemoveHeart1());
 
             Heart_1.enabled = false;

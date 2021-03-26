@@ -1,6 +1,8 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - Boss
+    - BossObjectSpawner
     - HighScore
     - LevelTransision
     - LivesSystem
@@ -11,6 +13,7 @@ ScriptsOnlyBuild:
     - Spawner
     - StorageArray
     - Tetris
+    - ThrownObject
     Cinemachine.dll:
     - Cinemachine.CinemachineBrain
     - Cinemachine.CinemachineComposer
@@ -77,45 +80,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9658}
     - Class: 114
-      Script: {instanceID: 9812}
+      Script: {instanceID: 9814}
     - Class: 114
-      Script: {instanceID: 9872}
+      Script: {instanceID: 9874}
     - Class: 114
-      Script: {instanceID: 9902}
+      Script: {instanceID: 9906}
     - Class: 114
-      Script: {instanceID: 9960}
+      Script: {instanceID: 9964}
     - Class: 114
-      Script: {instanceID: 10036}
+      Script: {instanceID: 10042}
     - Class: 114
-      Script: {instanceID: 10124}
+      Script: {instanceID: 10130}
     - Class: 114
-      Script: {instanceID: 10512}
+      Script: {instanceID: 10518}
     - Class: 114
-      Script: {instanceID: 10634}
+      Script: {instanceID: 10640}
     - Class: 114
-      Script: {instanceID: 10804}
+      Script: {instanceID: 10810}
     - Class: 114
-      Script: {instanceID: 10826}
+      Script: {instanceID: 10832}
     - Class: 114
-      Script: {instanceID: 10910}
+      Script: {instanceID: 10916}
     - Class: 114
-      Script: {instanceID: 10934}
+      Script: {instanceID: 10940}
     - Class: 114
-      Script: {instanceID: 11404}
+      Script: {instanceID: 11412}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 11414}
     - Class: 114
-      Script: {instanceID: 11466}
+      Script: {instanceID: 11474}
     - Class: 114
-      Script: {instanceID: 11750}
+      Script: {instanceID: 11758}
     - Class: 114
-      Script: {instanceID: 11772}
+      Script: {instanceID: 11780}
     - Class: 114
-      Script: {instanceID: 11800}
+      Script: {instanceID: 11810}
     - Class: 114
-      Script: {instanceID: 12204}
+      Script: {instanceID: 12214}
     - Class: 114
-      Script: {instanceID: 12246}
+      Script: {instanceID: 12256}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -133,6 +136,103 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     Assets/BOSS_V_0_1.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9658}
+    - Class: 114
+      Script: {instanceID: 9766}
+    - Class: 114
+      Script: {instanceID: 9814}
+    - Class: 114
+      Script: {instanceID: 9906}
+    - Class: 114
+      Script: {instanceID: 9964}
+    - Class: 114
+      Script: {instanceID: 10042}
+    - Class: 114
+      Script: {instanceID: 10130}
+    - Class: 114
+      Script: {instanceID: 10640}
+    - Class: 114
+      Script: {instanceID: 10832}
+    - Class: 114
+      Script: {instanceID: 10916}
+    - Class: 114
+      Script: {instanceID: 10940}
+    - Class: 114
+      Script: {instanceID: 11320}
+    - Class: 114
+      Script: {instanceID: 11412}
+    - Class: 114
+      Script: {instanceID: 11474}
+    - Class: 114
+      Script: {instanceID: 11758}
+    - Class: 114
+      Script: {instanceID: 11800}
+    - Class: 114
+      Script: {instanceID: 11810}
+    - Class: 114
+      Script: {instanceID: 12214}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
+      Script: {instanceID: 0}
+    - Class: 136
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/FreeFall_V_0_1.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -183,17 +283,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9698}
     - Class: 114
-      Script: {instanceID: 9902}
+      Script: {instanceID: 9906}
     - Class: 114
-      Script: {instanceID: 9960}
+      Script: {instanceID: 9964}
     - Class: 114
-      Script: {instanceID: 10512}
+      Script: {instanceID: 10518}
     - Class: 114
-      Script: {instanceID: 10634}
+      Script: {instanceID: 10640}
     - Class: 114
-      Script: {instanceID: 11750}
+      Script: {instanceID: 11758}
     - Class: 114
-      Script: {instanceID: 12246}
+      Script: {instanceID: 12256}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -268,6 +368,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Dropdown
+  - hash:
+      serializedVersion: 2
+      Hash: 891ea3408bfd6013080849cab9af8835
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BossObjectSpawner
   - hash:
       serializedVersion: 2
       Hash: a2113831d3323f931007e1b3812dc814
@@ -358,6 +464,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerControls
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -702,6 +814,12 @@ ScriptsOnlyBuild:
     className: CinemachineBlendListCamera
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Boss
+  - hash:
+      serializedVersion: 2
       Hash: 12e64d607873da15ad3f833620350d51
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -762,7 +880,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: cde6d068ac32cee65ff4e854deba38ec
+      Hash: de66ad9e7f583d266120fb61e6768e06
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LivesSystem
@@ -850,6 +968,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: e7dde25ea38728ea446265184cec5583
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ThrownObject
   - hash:
       serializedVersion: 2
       Hash: 6ff1c52123c50b3d73f35cd0e2e65dfd
@@ -1016,6 +1140,7 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/MainMenu.unity
   - Assets/BEES_V_0_1.unity
+  - Assets/FreeFall_V_0_1.unity
   - Assets/SNAKE_V_0_1.unity
   - Assets/BOSS_V_0_1.unity
-  playerPath: D:/UNI/YEAR 3/RTIP/Builds/BUILD_V_0_2/ARCADE3_V_0_1.exe
+  playerPath: D:/UNI/YEAR 3/RTIP/Builds/BUILD_V_0_3/ARCADE3_V_0_1.exe

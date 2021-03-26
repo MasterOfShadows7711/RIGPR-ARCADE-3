@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class ThrownObject : MonoBehaviour
 {
-    public GameObject Object;
+    public GameObject[] ApplePS;
+    public GameObject[] BannanaPS;
+    public GameObject[] CherryPS;
+    public GameObject[] BombPS;
     protected float MoveAnimation;
     public SphereCollider ThrownObejctCollider;
     private AudioSource Source;
     public AudioClip ThrowSound;
     public LayerMask Ground;
 
-    public GameObject Apple;
-    public ParticleSystem ApplePS; //Red-dark red
+    public float BombDetinationTime =  15f;
 
-    public ParticleSystem BannanaPS; //Yellow - white
-    public GameObject Bannana;
+    //public GameObject Apple;
+    //public ParticleSystem ApplePS; //Red-dark red
 
-    public ParticleSystem CherryPS; // green - red
-    public GameObject Cherry;
+    //public ParticleSystem BannanaPS; //Yellow - white
+    //public GameObject Bannana;
+
+    //public ParticleSystem CherryPS; // green - red
+    //public GameObject Cherry;
     
-    public GameObject Bomb;
-    public ParticleSystem BombPS; // Ornage - red
+    //public GameObject Bomb;
+    //public ParticleSystem BombPS; // Ornage - red
 
     public string Objname;
 
@@ -33,10 +38,10 @@ public class ThrownObject : MonoBehaviour
 
     public void Setup()
     {
-        ApplePS.Play(false);
-        BannanaPS.Play(false);
-        CherryPS.Play(false);
-        BombPS.Play(false);
+        //ApplePS.Play(false);
+        //BannanaPS.Play(false);
+        //CherryPS.Play(false);
+        //BombPS.Play(false);
 
         Objname = gameObject.name;
 
@@ -48,12 +53,22 @@ public class ThrownObject : MonoBehaviour
 
     }
 
-    private void Update()
+    public void Update()
     {
-        ThrownObjectDamage();
 
         FinalPos = transform.position;
 
+        if (Objname == "Bomb Variant(Clone)")
+        {
+            BombDetinationTime -= Time.deltaTime;
+            Debug.Log("" + BombDetinationTime);
+            if (BombDetinationTime <= 0.0f)
+            {
+                Instantiate(BombPS[Random.Range(0, BombPS.Length)], transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+
+        }
 
         if (!IsOnground())
         {
@@ -66,66 +81,39 @@ public class ThrownObject : MonoBehaviour
         
         if (IsOnground())
         {
-
-            Apple = GameObject.Find("Apple(Clone)");
-            Cherry = GameObject.Find("Cherry(Clone)");
-            Bannana = GameObject.Find("Bananas(Clone)");
-            Bomb = GameObject.Find("Bomb(Clone)");
-            Debug.Log("Apple value " + Apple); 
-            Debug.Log("cherry value " + Cherry); 
-            Debug.Log("banna value " + Bannana); 
-            Debug.Log("bomb value " + Bomb); 
-            //ApplePS.transform.position = playerPos;
-            //BannanaPS.transform.position = playerPos;
-            //CherryPS.transform.position = playerPos;
-            //BombPS.transform.position = playerPos;
+            //Debug.Log("" + BombDetinationTime);
+            ThrownObjectDamage();
 
             if (Objname == "Apple(Clone)")
             {
                 GetComponent<MeshRenderer>().enabled = false;
                 GetComponent<SphereCollider>().enabled = false;
                 //Debug.LogWarning("Apple IF Pass");
-                ApplePS.transform.position = FinalPos;
-                Debug.LogWarning("Apple IF Pass" + ApplePS.transform.position);
-
-                ApplePS.Play(true);
-                //DetroyTimerFunc();
-                //Destroy(gameObject);
+                Instantiate(ApplePS[Random.Range(0, ApplePS.Length)], transform.position, transform.rotation);
+                Destroy(this);
+                Destroy(gameObject);
             }
             if (Objname == "Cherry(Clone)")
             {
                 //Debug.LogWarning("Cherry IF Pass");
                 GetComponent<MeshRenderer>().enabled = false;
                 GetComponent<SphereCollider>().enabled = false;
-                CherryPS.transform.position = FinalPos;
-                Debug.LogWarning("Cherry IF Pass" + CherryPS.transform.position);
-                CherryPS.Play();
-                //DetroyTimerFunc();
-                //Destroy(gameObject);
+                Instantiate(CherryPS[Random.Range(0, CherryPS.Length)], transform.position, transform.rotation);
+                Destroy(this);
+                Destroy(gameObject);
             }
             if (Objname == "Bananas(Clone)")
             {
                 GetComponent<MeshRenderer>().enabled = false;
                 GetComponent<SphereCollider>().enabled = false;
-                //Debug.LogWarning("Banna IF Pass");
-                BannanaPS.transform.position = FinalPos;
-                Debug.LogWarning("Banna IF Pass" + BannanaPS.transform.position);
-
-                BannanaPS.Play();
-                //DetroyTimerFunc();
-               // Destroy(gameObject);
-            }
-            if (Objname == "Bomb(Clone)")
-            {
-                GetComponent<MeshRenderer>().enabled = false;
-                GetComponent<SphereCollider>().enabled = false;
-                //Debug.LogWarning("Bomb IF Pass");
-                BombPS.transform.position = FinalPos;
-                Debug.LogWarning("Bomb IF Pass" + BombPS.transform.position);
-
-                BombPS.Play();
-                DetroyTimerFunc();
+                Instantiate(BannanaPS[Random.Range(0, BannanaPS.Length)], transform.position, transform.rotation);
+                Destroy(this);
                 Destroy(gameObject);
+            }
+            if (Objname == "Bomb Variant(Clone)")
+            {
+                
+
             }
             
 
@@ -141,9 +129,39 @@ public class ThrownObject : MonoBehaviour
     {
         if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<Player>().GetComponent<CapsuleCollider>().bounds))
         {
+            if (Objname == "Bomb Variant(Clone)")
+            {
 
-            LivesSystem.lives--;
-            Destroy(gameObject);
+
+                //if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor2>().GetComponent<BoxCollider>().bounds))
+                //{ Boss First floor
+
+                //}
+
+                //if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor1>().GetComponent<BoxCollider>().bounds))
+                //{ 2nd
+
+
+                //}
+
+                //if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor0>().GetComponent<BoxCollider>().bounds))
+                //{ 3rd
+
+                //}
+
+                if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<Boss>().GetComponent<CapsuleCollider>().bounds))
+                {
+                    //Boss them self
+
+                }
+
+            }
+            else
+            {
+                LivesSystem.lives--;
+                Destroy(gameObject);
+            }
+                
         }
 
     }
@@ -159,21 +177,17 @@ public class ThrownObject : MonoBehaviour
         StartCoroutine(CapsuleColliderTimer());
 
     }
-    
     public void DetroyTimerFunc()
     {
         
         StartCoroutine(DetroyTimer());
 
     }
-
-
-
     IEnumerator CapsuleColliderTimer()
     {
         //Source.PlayOneShot(ThrowSound, 1f);
         GetComponent<SphereCollider>().enabled = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         GetComponent<SphereCollider>().enabled = true;
 
     }

@@ -26,6 +26,21 @@ public class LevelTransision : MonoBehaviour
 
     }
 
+    public void LevelChangeBoss()
+    {
+        StartCoroutine(LoadBOSSLevel());
+
+    }
+
+
+    IEnumerator LoadBOSSLevel()
+    {
+        Transition.SetTrigger("LevelStart");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(4);
+
+    }
+
     IEnumerator LoadNextLevel()
     {
         Transition.SetTrigger("LevelStart");
