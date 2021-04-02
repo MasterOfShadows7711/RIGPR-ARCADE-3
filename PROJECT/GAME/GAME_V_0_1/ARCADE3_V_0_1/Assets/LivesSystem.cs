@@ -25,7 +25,7 @@ public class LivesSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.End))
         {
             lives--;
-            Debug.Log("Lives count " + lives);
+            //Debug.Log("Lives count " + lives);
         }
 
 
@@ -36,7 +36,7 @@ public class LivesSystem : MonoBehaviour
         }
         else if (lives == 2)
         {
-            Debug.Log("Lives count " + lives);
+            //Debug.Log("Lives count " + lives);
             StartCoroutine(RemoveHeart3());
 
             Heart_3.enabled = false;

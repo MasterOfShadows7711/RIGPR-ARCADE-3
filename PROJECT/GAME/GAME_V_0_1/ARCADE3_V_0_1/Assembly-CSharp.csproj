@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\BombCountDownTimer.cs" />
     <Compile Include="Assets\Boss.cs" />
+    <Compile Include="Assets\BossFloor.cs" />
     <Compile Include="Assets\BossObjectSpawner.cs" />
     <Compile Include="Assets\HighScore.cs" />
     <Compile Include="Assets\HighScoreData.cs" />

@@ -14,7 +14,11 @@ public class ThrownObject : MonoBehaviour
     public AudioClip ThrowSound;
     public LayerMask Ground;
 
-    public float BombDetinationTime =  15f;
+    public float BombDetinationTime =  10f;
+
+    public bool Floor1;
+    public bool Floor2;
+    public bool BossFloor;
 
     //public GameObject Apple;
     //public ParticleSystem ApplePS; //Red-dark red
@@ -24,7 +28,7 @@ public class ThrownObject : MonoBehaviour
 
     //public ParticleSystem CherryPS; // green - red
     //public GameObject Cherry;
-    
+
     //public GameObject Bomb;
     //public ParticleSystem BombPS; // Ornage - red
 
@@ -42,19 +46,23 @@ public class ThrownObject : MonoBehaviour
         //BannanaPS.Play(false);
         //CherryPS.Play(false);
         //BombPS.Play(false);
+        BossFloor = false;
+        Floor1 = false;
+        Floor2 = false;
 
         Objname = gameObject.name;
 
         BossPos = FindObjectOfType<Boss>().transform.position;
         playerPos = FindObjectOfType<Player>().transform.position;
         ThrownObejctCollider = GetComponent<SphereCollider>();
-        DelayCapsuleCollider();
+        DelaySphereCollider();
         //GetComponent<ParticleSystem>().Stop(true);
 
     }
 
     public void Update()
     {
+        
 
         FinalPos = transform.position;
 
@@ -83,6 +91,7 @@ public class ThrownObject : MonoBehaviour
         {
             //Debug.Log("" + BombDetinationTime);
             ThrownObjectDamage();
+            
 
             if (Objname == "Apple(Clone)")
             {
@@ -112,7 +121,7 @@ public class ThrownObject : MonoBehaviour
             }
             if (Objname == "Bomb Variant(Clone)")
             {
-                
+                DestructionDetection();
 
             }
             
@@ -131,30 +140,7 @@ public class ThrownObject : MonoBehaviour
         {
             if (Objname == "Bomb Variant(Clone)")
             {
-
-
-                //if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor2>().GetComponent<BoxCollider>().bounds))
-                //{ Boss First floor
-
-                //}
-
-                //if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor1>().GetComponent<BoxCollider>().bounds))
-                //{ 2nd
-
-
-                //}
-
-                //if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor0>().GetComponent<BoxCollider>().bounds))
-                //{ 3rd
-
-                //}
-
-                if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<Boss>().GetComponent<CapsuleCollider>().bounds))
-                {
-                    //Boss them self
-
-                }
-
+                
             }
             else
             {
@@ -166,15 +152,89 @@ public class ThrownObject : MonoBehaviour
 
     }
 
+    public void DestructionDetection()
+    {        
+        //Debug.Log("DESTUCTION FUNC TRUGGERED");
+        //Debug.Log("Boss name " + FindObjectOfType<BossFloor>().Objname);
+
+        if (!BossFloor)
+        {
+            if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<Boss>().GetComponent<CapsuleCollider>().bounds))
+            {
+                Debug.Log("Boss destroy");
+                Instantiate(BombPS[Random.Range(0, BombPS.Length)], transform.position, transform.rotation);
+                Destroy(FindObjectOfType<Boss>());
+                Destroy(GameObject.Find("Boss_Char"));
+                Destroy(gameObject);
+
+            }
+            else
+            {
+
+
+            }
+
+        }
+        if (!Floor2)
+        {
+            if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor>().GetComponent<BoxCollider>().bounds))
+            {
+                if (FindObjectOfType<BossFloor>().Objname == "BossFloor2")
+                {
+                    Debug.Log("BossFloor2 destroy");
+                    Instantiate(BombPS[Random.Range(0, BombPS.Length)], transform.position, transform.rotation);
+                    Destroy(FindObjectOfType<BossFloor>());
+                    Destroy(GameObject.Find("BossFloor2"));
+                    FindObjectOfType<Boss>().ThrowSpeed = 1;
+                    Floor2 = true;
+                    Destroy(gameObject);
+                }
+                else
+                {
+
+
+                }
+
+            }
+
+        }
+
+        if (!Floor1)
+        {
+            if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor>().GetComponent<BoxCollider>().bounds))
+            {
+                if (FindObjectOfType<BossFloor>().Objname == "BossFloor1")
+                {
+                    Debug.Log("BossFloor1 destroy");
+                    Instantiate(BombPS[Random.Range(0, BombPS.Length)], transform.position, transform.rotation);
+                    Destroy(FindObjectOfType<BossFloor>());
+                    Destroy(GameObject.Find("BossFloor1"));
+                    FindObjectOfType<Boss>().ThrowSpeed = 2;
+                    Floor1 = true;
+                    Destroy(gameObject);
+
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+        }
+        //Debug.Log("Boss name " + FindObjectOfType<BossFloor>().Objname);
+    }
+
     private bool IsOnground()
     {
         return Physics.CheckSphere(ThrownObejctCollider.bounds.center, GetComponent<SphereCollider>().bounds.extents.x, Ground);
     }
 
-    public void DelayCapsuleCollider()
+    public void DelaySphereCollider()
     {
         
-        StartCoroutine(CapsuleColliderTimer());
+        StartCoroutine(SphereColliderTimer());
 
     }
     public void DetroyTimerFunc()
@@ -183,7 +243,7 @@ public class ThrownObject : MonoBehaviour
         StartCoroutine(DetroyTimer());
 
     }
-    IEnumerator CapsuleColliderTimer()
+    IEnumerator SphereColliderTimer()
     {
         //Source.PlayOneShot(ThrowSound, 1f);
         GetComponent<SphereCollider>().enabled = false;
