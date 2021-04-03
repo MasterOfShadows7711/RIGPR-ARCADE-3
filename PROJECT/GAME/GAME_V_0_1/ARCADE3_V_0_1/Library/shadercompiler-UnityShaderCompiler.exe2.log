@@ -1,2 +1,4 @@
 Base path: 'C:/Program Files/Unity/Editor/Data', plugins path 'C:/Program Files/Unity/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
+Cmd: disassembleShader
+  api=4 insize=590 outsize=1401 ok=1

@@ -193,8 +193,9 @@ public class Tetris : MonoBehaviour
                 ////SetShapes[i] = transform.position;
                 StorageArray.StorageArrayFunction(FindObjectOfType<StorageArray>().BlockCount, transform.position);
                 //Debug.Log("Dose the Array work?" + StorageArray.SetShapes[i] + transform.position);
-                
+
                 //Debug.Log("FallArea - Failed Gridcheck()" +gameObject.name + transform.position);
+                FindObjectOfType<PointsSystem>().Points -= 100;
                 this.enabled = false;
                 FindObjectOfType<Spawner>().transform.position += new Vector3 (0, 0.5f, 0);
                 FindObjectOfType<Spawner>().NewBlock();
@@ -207,6 +208,7 @@ public class Tetris : MonoBehaviour
                 StorageArray.StorageArrayFunction(FindObjectOfType<StorageArray>().BlockCount, transform.position);
                 Debug.Log("BlockCount_" + FindObjectOfType<StorageArray>().BlockCount);
                 //Debug.Log("FallArea -  has failed ShapesInGrid()" + transform.position);
+                FindObjectOfType<PointsSystem>().Points -= 100;
                 this.enabled = false;
                 FindObjectOfType<Spawner>().transform.position += new Vector3(0, 0.5f, 0);
                 FindObjectOfType<Spawner>().NewBlock();
