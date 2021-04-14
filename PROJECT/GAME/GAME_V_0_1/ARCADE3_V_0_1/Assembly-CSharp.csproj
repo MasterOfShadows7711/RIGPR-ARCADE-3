@@ -64,10 +64,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BeeMovement.cs" />
     <Compile Include="Assets\BombCountDownTimer.cs" />
     <Compile Include="Assets\Boss.cs" />
     <Compile Include="Assets\BossFloor.cs" />
     <Compile Include="Assets\BossObjectSpawner.cs" />
+    <Compile Include="Assets\CHAR\PlayerControllor.cs" />
     <Compile Include="Assets\HighScore.cs" />
     <Compile Include="Assets\HighScoreData.cs" />
     <Compile Include="Assets\LevelTransision.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Assets\SaveSystem.cs" />
     <Compile Include="Assets\Shader\imageEffects\cPrecision.cs" />
     <Compile Include="Assets\Spawner.cs" />
+    <Compile Include="Assets\Spikes.cs" />
     <Compile Include="Assets\StorageArray.cs" />
     <Compile Include="Assets\Tetris.cs" />
     <Compile Include="Assets\TextureChanger.cs" />

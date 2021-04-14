@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomb Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2959994798967170831, guid: 5e4e4e73abd147a40bc4038f4a40cfef,
+        type: 3}
+      propertyPath: BombDetinationTime
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7482886226282990121, guid: 5e4e4e73abd147a40bc4038f4a40cfef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,11 +71,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2959994798967170831, guid: 5e4e4e73abd147a40bc4038f4a40cfef,
-        type: 3}
-      propertyPath: BombDetinationTime
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1325811021596555204, guid: 5e4e4e73abd147a40bc4038f4a40cfef,
         type: 3}

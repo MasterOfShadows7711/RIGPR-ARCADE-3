@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -21,9 +22,12 @@ public class Player : MonoBehaviour
     public LayerMask Ground;
     public float JumpAmount = 3;
 
+    public Animator Jump;
+
     // Start is called before the first frame update
     void Start()
     {
+        Score = 10000;
         Source = GetComponent<AudioSource>();
 
         rbPlayer = GetComponent<Rigidbody>();
@@ -34,6 +38,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Jump.ResetTrigger("JUMP");
+
         if (Input.GetKey(KeyCode.A))
         {
             
@@ -57,9 +63,9 @@ public class Player : MonoBehaviour
         {
             transform.position += new Vector3(1.5f, 0, 0) * Time.deltaTime;
             
-            if (transform.rotation.eulerAngles.y == 180)
+            if (transform.rotation.eulerAngles.y == 270)
             {
-                //transform.Rotate(0, -90, 0);
+                //transform.Rotate(0, 90, 0);
             }
             else
             {
@@ -79,7 +85,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                transform.Rotate(0, 90, 0);
+                //transform.Rotate(0, 90, 0);
             }
             
         }
@@ -88,6 +94,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("SPACE KEY PRESSED");
             Source.PlayOneShot(JumpSound,1f);
+            //Jump.StartPlayback();
             rbPlayer.AddForce(Vector3.up * JumpAmount, ForceMode.Impulse);
         }
        
@@ -111,7 +118,7 @@ public class Player : MonoBehaviour
 
     bool GridCheckPlayer()
     {
-        if (transform.position.x <= -5 || transform.position.x >= 5 || transform.position.y <= -0.1 || transform.position.z <= 4.9 || transform.position.x >= 5.1)
+        if (transform.position.x <= -5 || transform.position.x >= 5 || transform.position.y <= -5 || transform.position.z <= 3.5)
         {
             Debug.Log("GridCheckPlayer() _ Player has tried to exit grid." + transform.position);
             return false;
@@ -119,7 +126,7 @@ public class Player : MonoBehaviour
         return true; // If the shape is not out side
     }
 
-    private bool IsOnground()
+    public bool IsOnground()
     {
         return Physics.CheckCapsule(PlayerCol.bounds.center, new Vector3(PlayerCol.bounds.center.x, PlayerCol.bounds.min.y, PlayerCol.bounds.center.z), PlayerCol.radius * .8f, Ground);
         

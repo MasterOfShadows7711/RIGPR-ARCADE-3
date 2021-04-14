@@ -14,6 +14,11 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         GameStart();
+        //FindObjectOfType<Player>().PlayerName = "";
+        //FindObjectOfType<Player>().Score = 1000;
+
+        //SaveSystem.SaveScore(FindObjectOfType<Player>());
+
     }
 
     // Update is called once per frame

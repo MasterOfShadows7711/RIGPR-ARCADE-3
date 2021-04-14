@@ -47,10 +47,10 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerPosText.text = "Player Pos: " + FindObjectOfType<Player>().transform.position;
+        //PlayerPosText.text = "Player Pos: " + FindObjectOfType<Player>().transform.position;
         //BlockPosText.text = "Block Pos: " + FindObjectOfType<Tetris>().transform.position;
-        GameOverDebugText.text = "GameOver Status: " + LivesSystem.GameOver;
-        PlayerLivesText.text = "Player Lives: " + LivesSystem.lives;
+        //GameOverDebugText.text = "GameOver Status: " + LivesSystem.DebugGameOver;
+        //PlayerLivesText.text = "Player Lives: " + LivesSystem.lives;
 
         if (Input.GetKeyDown(KeyCode.Escape)) //To Pause the game
         {
@@ -79,6 +79,14 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F2))
         {
             FindObjectOfType<LevelTransision>().LevelChangeBoss();
+
+
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            FindObjectOfType<LevelTransision>().LevelDebugRoom();
 
 
 

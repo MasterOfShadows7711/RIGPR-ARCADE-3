@@ -12,16 +12,29 @@ public class PointsSystem : MonoBehaviour
 
     public void Start()
     {
-        Points = 10000;
+        DelayTimerFunc();
+
+        Points = FindObjectOfType<Player>().Score;
 
     }
 
     public void Update()
     {
-
+        
         PointsUI.text = "" + Points;
 
     }
 
+    public void DelayTimerFunc()
+    {
+
+        StartCoroutine(DelayTimer());
+
+    }
+
+    IEnumerator DelayTimer()
+    {
+        yield return new WaitForSeconds(5);
+    }
 
 }

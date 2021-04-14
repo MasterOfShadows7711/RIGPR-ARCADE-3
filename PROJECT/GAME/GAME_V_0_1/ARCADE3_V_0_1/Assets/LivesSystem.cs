@@ -7,15 +7,17 @@ public class LivesSystem : MonoBehaviour
 {
     public Animator HeartUI;
     
-    public static bool GameOver = false;
+    public static bool DebugGameOver = false;
     public static int lives = 3;
     
     public Image Heart_3;
     public Image Heart_2;
     public Image Heart_1;
+    public Image GameOver;
     // Start is called before the first frame update
     void Start()
     {
+        GameOver.enabled = false;
         lives = 3;
     }
 
@@ -34,28 +36,36 @@ public class LivesSystem : MonoBehaviour
             //Debug.Log("Lives count " + lives);
 
         }
-        else if (lives == 2)
+        if (lives == 2)
         {
             //Debug.Log("Lives count " + lives);
             StartCoroutine(RemoveHeart3());
+            
 
             Heart_3.enabled = false;
         }
-        else if (lives == 1)
+        if (lives == 1)
         {
             StartCoroutine(RemoveHeart2());
+            
             Heart_2.enabled = false;
 
         }
-        else if (lives == 0)
+        if (lives == 0)
         {
-            FindObjectOfType<Player>().enabled = false;
+            
             StartCoroutine(RemoveHeart1());
+            
 
             Heart_1.enabled = false;
-            GameOver = true;
+            DebugGameOver = true;
+            GameOver.enabled = true;
 
-            //SaveSystem.SaveScore(GetComponent<Player>());
+            FindObjectOfType<Player>().Score = 0;
+            SaveSystem.SaveScore(FindObjectOfType<Player>());
+            FindObjectOfType<Player>().enabled = false;
+            DelayTimerFunc();
+            FindObjectOfType<LevelTransision>().MainMenu();
 
         }
 
@@ -78,4 +88,17 @@ public class LivesSystem : MonoBehaviour
         HeartUI.SetTrigger("LiveLost");
         yield return new WaitForSeconds(1.5f);
     }
+
+    public void DelayTimerFunc()
+    {
+
+        StartCoroutine(DelayTimer());
+
+    }
+
+    IEnumerator DelayTimer()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
 }

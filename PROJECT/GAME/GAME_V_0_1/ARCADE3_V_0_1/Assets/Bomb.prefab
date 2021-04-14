@@ -214,7 +214,10 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 512
-  BombDetinationTime: 7
+  BombDetinationTime: 0
+  Floor1: 0
+  Floor2: 0
+  BossFloor: 0
   Objname: 
 --- !u!54 &7008683677923370427
 Rigidbody:

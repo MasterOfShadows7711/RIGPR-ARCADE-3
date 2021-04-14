@@ -14,11 +14,11 @@ public class ThrownObject : MonoBehaviour
     public AudioClip ThrowSound;
     public LayerMask Ground;
 
-    public float BombDetinationTime =  10f;
+    public float BombDetinationTime =  15f;
 
-    public bool Floor1;
-    public bool Floor2;
-    public bool BossFloor;
+    //public bool Floor1;
+    //public bool Floor2;
+    //public bool BossFloor;
 
     //public GameObject Apple;
     //public ParticleSystem ApplePS; //Red-dark red
@@ -46,9 +46,7 @@ public class ThrownObject : MonoBehaviour
         //BannanaPS.Play(false);
         //CherryPS.Play(false);
         //BombPS.Play(false);
-        BossFloor = false;
-        Floor1 = false;
-        Floor2 = false;
+        
 
         Objname = gameObject.name;
 
@@ -144,6 +142,7 @@ public class ThrownObject : MonoBehaviour
             }
             else
             {
+                FindObjectOfType<Player>().Score -= 1000;
                 LivesSystem.lives--;
                 Destroy(gameObject);
             }
@@ -157,13 +156,42 @@ public class ThrownObject : MonoBehaviour
         //Debug.Log("DESTUCTION FUNC TRUGGERED");
         //Debug.Log("Boss name " + FindObjectOfType<BossFloor>().Objname);
 
-        if (!BossFloor)
+        if (!FindObjectOfType<Boss>().BossFloor)
         {
             if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<Boss>().GetComponent<CapsuleCollider>().bounds))
             {
+                FindObjectOfType<Player>().Score += 1000;
                 Debug.Log("Boss destroy");
                 Instantiate(BombPS[Random.Range(0, BombPS.Length)], transform.position, transform.rotation);
                 Destroy(FindObjectOfType<Boss>());
+                SaveSystem.SaveScore(FindObjectOfType<Player>());
+
+                PlayerData data = SaveSystem.LoadScore();
+                FindObjectOfType<Player>().Score = data.Score;
+                if (FindObjectOfType<Player>().Score >= FindObjectOfType<HighScore>().HighScoreInt)
+                {
+                    
+                    FindObjectOfType<Player>().PlayerName = data.PlayerName;
+                    FindObjectOfType<Player>().Score = data.Score;
+                    FindObjectOfType<HighScore>().HighScorePlayerName = FindObjectOfType<Player>().PlayerName;
+                    FindObjectOfType<HighScore>().HighScoreInt = FindObjectOfType<Player>().Score;
+
+
+
+                    SaveSystem.SaveNewHighScore(FindObjectOfType<HighScore>());
+                    Debug.LogError("  " + FindObjectOfType<Player>().Score + "  " + data.Score);
+
+                }
+
+                if (FindObjectOfType<Player>().Score != FindObjectOfType<HighScore>().HighScoreInt)
+                {
+                    FindObjectOfType<Player>().PlayerName = data.PlayerName;
+                    FindObjectOfType<Player>().Score = data.Score;
+
+
+                }
+
+
                 Destroy(GameObject.Find("Boss_Char"));
                 Destroy(gameObject);
 
@@ -175,42 +203,62 @@ public class ThrownObject : MonoBehaviour
             }
 
         }
-        if (!Floor2)
+        else if (FindObjectOfType<Boss>().BossFloor)
+        {
+
+        }
+
+        if (!FindObjectOfType<Boss>().Floor2)
         {
             if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor>().GetComponent<BoxCollider>().bounds))
             {
                 if (FindObjectOfType<BossFloor>().Objname == "BossFloor2")
                 {
+                    FindObjectOfType<Player>().Score += 500;
                     Debug.Log("BossFloor2 destroy");
                     Instantiate(BombPS[Random.Range(0, BombPS.Length)], transform.position, transform.rotation);
                     Destroy(FindObjectOfType<BossFloor>());
                     Destroy(GameObject.Find("BossFloor2"));
                     FindObjectOfType<Boss>().ThrowSpeed = 1;
-                    Floor2 = true;
+                    FindObjectOfType<Boss>().Floor2 = true;
                     Destroy(gameObject);
                 }
                 else
                 {
 
-
                 }
+                
+
+            }
+            else if (!GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor>().GetComponent<BoxCollider>().bounds))
+            {
+
 
             }
 
         }
+        else if (!FindObjectOfType<Boss>().Floor2)
+        {
 
-        if (!Floor1)
+
+        }
+        
+
+        
+
+        if (!FindObjectOfType<Boss>().Floor1)
         {
             if (GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor>().GetComponent<BoxCollider>().bounds))
             {
                 if (FindObjectOfType<BossFloor>().Objname == "BossFloor1")
                 {
+                    FindObjectOfType<Player>().Score += 500;
                     Debug.Log("BossFloor1 destroy");
                     Instantiate(BombPS[Random.Range(0, BombPS.Length)], transform.position, transform.rotation);
                     Destroy(FindObjectOfType<BossFloor>());
                     Destroy(GameObject.Find("BossFloor1"));
                     FindObjectOfType<Boss>().ThrowSpeed = 2;
-                    Floor1 = true;
+                    FindObjectOfType<Boss>().Floor1 = true;
                     Destroy(gameObject);
 
                 }
@@ -218,13 +266,24 @@ public class ThrownObject : MonoBehaviour
                 {
 
                 }
+                
 
+
+            }
+            else if (!GetComponent<SphereCollider>().bounds.Intersects(FindObjectOfType<BossFloor>().GetComponent<BoxCollider>().bounds))
+            {
 
             }
 
         }
+        else if (!FindObjectOfType<Boss>().Floor1)
+        {
+
+
+        }
         //Debug.Log("Boss name " + FindObjectOfType<BossFloor>().Objname);
     }
+    
 
     private bool IsOnground()
     {

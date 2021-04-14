@@ -20,7 +20,11 @@ public class Tetris : MonoBehaviour
 
     int i = 1;
 
-    
+    public string Objname;
+
+    //int FallSpeed;
+
+
     //Vector3[] SetShaps = new Vector3[50];
 
 
@@ -54,11 +58,19 @@ public class Tetris : MonoBehaviour
         //    Instantiate(Hexagon, new Vector3(XStart + (ColumnSpace * (i % Columns)), YStart + (-RowSpace * (i / Columns)), ZStart), Quaternion.identity);
         //}
 
+
         //GameObject Array = GameObject.Find("StorageArrayObject");
         //StorageArray BlockNum = Array.GetComponent<StorageArray>();
         //StorageArray.BlockCount
 
+        Objname = gameObject.name;
+
         FindObjectOfType<StorageArray>().BlockCount++;
+
+        if (Objname == "BOX(Clone)")
+        {
+            transform.Rotate(-90, 0, 0);
+        }
 
     }
 
@@ -77,6 +89,22 @@ public class Tetris : MonoBehaviour
         // E Rotate Clockwise
 
         //PLAYER TRACKING
+
+        if (Objname == "BOX(Clone)")
+        {
+            //transform.Rotate(-90, 0, 0);
+        }
+
+
+        if (FindObjectOfType<Player>().transform.position.y >= 10)
+        {
+            
+            SaveSystem.SaveScore(FindObjectOfType<Player>());
+
+            FindObjectOfType<LevelTransision>().LevelChangeBoss();
+
+        }
+
 
         if (transform.position.y >= FindObjectOfType<Spawner>().transform.position.y / 2)
         {
@@ -183,8 +211,9 @@ public class Tetris : MonoBehaviour
         //}
 
         //Fall area
-        if (Time.time - PreviousFallTime > (Input.GetKey(KeyCode.S) ? FallingTime / 10 : FallingTime)) //If Space is pressed move block 10* faster.
+        if (Time.time - PreviousFallTime > (Input.GetKey(KeyCode.S) ? FallingTime / FindObjectOfType<Spawner>().FallSpeed : FallingTime)) //If Space is pressed move block 10* faster.
         {
+            Debug.Log("FallSpeed  " + FindObjectOfType<Spawner>().FallSpeed);
             transform.position += new Vector3(0, -0.5f, 0);
             if (!GridCheck())
             {
@@ -195,7 +224,7 @@ public class Tetris : MonoBehaviour
                 //Debug.Log("Dose the Array work?" + StorageArray.SetShapes[i] + transform.position);
 
                 //Debug.Log("FallArea - Failed Gridcheck()" +gameObject.name + transform.position);
-                FindObjectOfType<PointsSystem>().Points -= 100;
+                FindObjectOfType<Player>().Score -= 10;
                 this.enabled = false;
                 FindObjectOfType<Spawner>().transform.position += new Vector3 (0, 0.5f, 0);
                 FindObjectOfType<Spawner>().NewBlock();
@@ -208,7 +237,7 @@ public class Tetris : MonoBehaviour
                 StorageArray.StorageArrayFunction(FindObjectOfType<StorageArray>().BlockCount, transform.position);
                 Debug.Log("BlockCount_" + FindObjectOfType<StorageArray>().BlockCount);
                 //Debug.Log("FallArea -  has failed ShapesInGrid()" + transform.position);
-                FindObjectOfType<PointsSystem>().Points -= 100;
+                FindObjectOfType<Player>().Score -= 10;
                 this.enabled = false;
                 FindObjectOfType<Spawner>().transform.position += new Vector3(0, 0.5f, 0);
                 FindObjectOfType<Spawner>().NewBlock();
