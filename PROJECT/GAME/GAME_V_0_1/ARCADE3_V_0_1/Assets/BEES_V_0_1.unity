@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 758671687}
+  m_Follow: {fileID: 378628130}
   m_Lens:
     FieldOfView: 75
     OrthographicSize: 5
@@ -460,7 +460,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290513516}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!1 &378628123 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 2ed5eeee451306849bcf52dc94f45d66,
@@ -632,6 +632,12 @@ Rigidbody:
 --- !u!95 &378628129 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 2ed5eeee451306849bcf52dc94f45d66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1374405356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &378628130 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2ed5eeee451306849bcf52dc94f45d66,
     type: 3}
   m_PrefabInstance: {fileID: 1374405356}
   m_PrefabAsset: {fileID: 0}

@@ -16,6 +16,7 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //FindObjectOfType<ThrownObject>().Leaderboard.enabled = false;
         //NewGame = false;
         PlayerData data = SaveSystem.LoadScore();
         FindObjectOfType<Player>().PlayerName = data.PlayerName;

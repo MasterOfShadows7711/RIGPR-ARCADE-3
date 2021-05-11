@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThrownObject : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ThrownObject : MonoBehaviour
     private AudioSource Source;
     public AudioClip ThrowSound;
     public LayerMask Ground;
+    public Image Leaderboard;
 
     public float BombDetinationTime =  15f;
 
@@ -46,8 +48,8 @@ public class ThrownObject : MonoBehaviour
         //BannanaPS.Play(false);
         //CherryPS.Play(false);
         //BombPS.Play(false);
-        
 
+        //Leaderboard.enabled = false;
         Objname = gameObject.name;
 
         BossPos = FindObjectOfType<Boss>().transform.position;
@@ -187,6 +189,8 @@ public class ThrownObject : MonoBehaviour
                 {
                     FindObjectOfType<Player>().PlayerName = data.PlayerName;
                     FindObjectOfType<Player>().Score = data.Score;
+                    //Leaderboard.enabled = true;
+                    
 
 
                 }

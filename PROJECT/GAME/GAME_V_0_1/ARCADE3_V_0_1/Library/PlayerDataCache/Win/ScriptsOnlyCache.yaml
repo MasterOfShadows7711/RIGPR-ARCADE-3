@@ -37,8 +37,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -82,6 +84,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -110,6 +114,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10166}
     - Class: 114
       Script: {instanceID: 10554}
+    - Class: 114
+      Script: {instanceID: 10674}
     - Class: 114
       Script: {instanceID: 10680}
     - Class: 114
@@ -143,6 +149,8 @@ ScriptsOnlyBuild:
     - Class: 128
       Script: {instanceID: 0}
     - Class: 136
+      Script: {instanceID: 0}
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -401,6 +409,10 @@ ScriptsOnlyBuild:
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
@@ -1150,7 +1162,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 3adc244234d92a93e7db404ed6a2cba1
+      Hash: 8301d08acfc6eef4d944ef5ea2341147
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ThrownObject
@@ -1336,4 +1348,4 @@ ScriptsOnlyBuild:
   - Assets/SNAKE_V_0_1.unity
   - Assets/BOSS_V_0_1.unity
   - Assets/DeBugAssests.unity
-  playerPath: D:/UNI/YEAR 3/RTIP/Builds/BUILD_V_0_6/ARCADE3_V_0_1.exe
+  playerPath: D:/UNI/YEAR 3/RTIP/Builds/BUILD_V_0_7.2/ARCADE3_V_0_1.exe
